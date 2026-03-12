@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relatori – Social Forum dell'Abitare 2026</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .relatori-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .relatore-card {
+      background: var(--white);
+      border: 2px solid var(--lavender);
+      border-radius: 16px;
+      padding: 1.5rem;
+      text-decoration: none;
+      color: var(--text);
+      display: block;
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .relatore-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: var(--yellow);
+      transform: scaleX(0);
+      transition: transform 0.2s;
+      transform-origin: left;
+    }
+
+    .relatore-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+      border-color: var(--teal);
+    }
+    .relatore-card:hover::before { transform: scaleX(1); }
+
+    .relatore-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--lavender-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--lavender-dark);
+      margin-bottom: 1rem;
+      flex-shrink: 0;
+    }
+
+    .relatore-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+      line-height: 1.3;
+    }
+
+    .relatore-org {
+      font-size: 0.82rem;
+      color: var(--teal);
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+    }
+
+    .relatore-bio-short {
+      font-size: 0.88rem;
+      line-height: 1.5;
+      opacity: 0.75;
+    }
+
+    .relatore-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 1rem;
+    }
+
+    .relatore-tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: var(--lavender-bg);
+      color: var(--lavender-dark);
+    }
+
+    .filter-bar {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .filter-btn {
+      padding: 7px 18px;
+      border-radius: 100px;
+      border: 2px solid var(--lavender);
+      background: transparent;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      color: var(--text);
+      transition: all 0.15s;
+    }
+
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--teal);
+      color: white;
+      border-color: var(--teal);
+    }
+  </style>
+</head>
+<body>
+
+<nav id="main-nav">
+  <a href="index.html" class="nav-logo">
+    <img src="logo.png" alt="Social Forum dell'Abitare" style="height: 36px; width: auto; border-radius: 4px;">
+  </a>
+  <button class="nav-hamburger" aria-label="Menu" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="programma.html">Programma</a></li>
+    <li><a href="workshop.html">Laboratori</a></li>
+    <li><a href="relatori.html">Relatori</a></li>
+    <li><a href="indicazioni.html">Indicazioni</a></li>
+    <li><a href="passaggi.html" style="color: var(--teal); font-weight: 700;">🚗 Passaggi</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="blob shape-circle page-hero-blob-1"></div>
+  <div class="blob shape-circle page-hero-blob-2"></div>
+  <span class="section-label">Chi parlerà</span>
+  <h1>I Relatori</h1>
+  <p style="font-size: 1.1rem; opacity: 0.8; max-width: 600px; line-height: 1.6; position: relative; z-index: 1; margin-top: 0.75rem;">
+    Ricercatori, attivisti, urbanisti e professionisti che contribuiranno al Social Forum dell'Abitare di Venezia.
+  </p>
+</div>
+
+<section>
+  <div class="container">
+
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterRelatori('tutti', this)">Tutti</button>
+      <button class="filter-btn" onclick="filterRelatori('venerdi', this)">Venerdì 10 Aprile</button>
+      <button class="filter-btn" onclick="filterRelatori('sabato', this)">Sabato 11 Aprile</button>
+    </div>
+
+    <div class="relatori-grid" id="relatori-grid">
+
+      <!-- VENERDÌ: Tavola Rotonda -->
+
+      <a href="relatori/laura-fregolent.html" class="relatore-card" data-day="venerdi sabato">
+        <div class="relatore-avatar">LF</div>
+        <div class="relatore-name">Laura Fregolent</div>
+        <div class="relatore-org">Università IUAV di Venezia – H-City</div>
+        <p class="relatore-bio-short">Professoressa ordinaria di Tecnica e pianificazione urbanistica. Coordina H-City. Housing in the city all'IUAV.</p>
+        <div class="relatore-tags">
+          <span class="relatore-tag">Urbanistica</span>
+          <span class="relatore-tag">Housing</span>
+          <span class="relatore-tag">IUAV</span>
+        </div>
+      </a>
+
+      <a href="relatori/andrea-marzolino.html" class="relatore-card" data-day="venerdi">
+        <div class="relatore-avatar">AM</div>
+        <div class="relatore-name">Andrea Marzolino</div>
+        <div class="relatore-org">ORDA – Osservatorio Reggiano per il Diritto all'Abitare</div>
+        <p class="relatore-bio-short">Coordinatore dell'Osservatorio Reggiano per il Diritto all'Abitare, impegnato nell'analisi e nella promozione del diritto alla casa a Reggio Emilia.</p>
+        <div class="relatore-tags">
+          <span class="relatore-tag">Diritto all'abitare</span>
+          <span class="relatore-tag">Reggio Emilia</span>
+        </div>
+      </a>
+
+      <a href="relatori/enrico-puccini.html" class="relatore-card" data-day="venerdi">
+        <div class="relatore-avatar">EP</div>
+        <div class="relatore-name">Enrico Puccini</div>
+        <div class="relatore-org">Osservatorio Casa, Roma</div>
+        <p class="relatore-bio-short">Esperto di politiche abitative e mercato dell'affitto a Roma, attivo nell'Osservatorio Casa della Capitale.</p>
+        <div class="relatore-tags">
+          <span class="relatore-tag">Mercato casa</span>
+          <span class="relatore-tag">Roma</span>
+        </div>
+      </a>
+
+      <a href="relatori/marco-peverini.html" class="relatore-card" data-day="venerdi">
+        <div class="relatore-avatar">MP</div>
+        <div class="relatore-name">Marco Peverini</div>
+        <div class="relatore-org">OCA – Osservatorio Casa Abbordabile, Milano</div>
+        <p class="relatore-bio-short">Ricercatore e attivista per il diritto all'abitare a Milano, parte dell'Osservatorio Casa Abbordabile.</p>
+        <div class="relatore-tags">
+          <span class="relatore-tag">Affordability</span>
+          <span class="relatore-tag">Milano</span>
+        </div>
+      </a>
+
+      <a href="relatori/marco-guerzoni.html" class="relatore-card" data-day="venerdi">
+        <div class="relatore-avatar">MG</div>
+        <div class="relatore-name">Marco Guerzoni</div>
+        <div class="relatore-org">OMSA – Osservatorio Metropolitano Sistema Abitativo, Bologna</div>
+        <p class="relatore-bio-short">Coordina l'OMSA, osservatorio metropolitano che analizza il sistema abitativo bolognese con particolare attenzione ai vuoti e alla rigenerazione.</p>
+        <div class="relatore-tags">
+          <span class="relatore-tag">Dati abitativi</span>
+          <span class="relatore-tag">Bologna</span>
+        </div>
+      </a>
+
+      <a href="relatori/orazio-alberti.html" class="relatore-card" data-day="venerdi">
+        <div class="relatore-avatar">OA</div>
+        <div class="relatore-name">Orazio Alberti</div>
+        <div class="relatore-org">OCIO – Osservatorio CIvicO, Venezia</div>
+        <p class="relatore-bio-short">Parte di OCIO, osservatorio civico veneziano che monitora la casa e la residenza con approcci data-driven e partecipativi.</p>
+        <div class="relatore-tags">
+          <span class="relatore-tag">Venezia</span>
+          <span class="relatore-tag">Dati civici</span>
+        </div>
+      </a>
+
+      <!-- VENERDÌ: Laboratori -->
+
+      <a href="relatori/antonella-ciociola.html" class="relatore-card" data-day="venerdi">
+        <div class="relatore-avatar">AC</div>
+        <div class="relatore-name">Antonella Ciociola</div>
+        <div class="relatore-org">Monithon</div>
+        <p class="relatore-bio-short">Lead editor di Monithon, piattaforma italiana di monitoraggio civico dei fondi pubblici. Esperta di open data e partecipazione civica.</p>
+        <div class="relatore-tags">
+          <span class="relatore-tag">Open data</span>
+          <span class="relatore-tag">Monitoraggio civico</span>
+        </div>
+      </a>
+
+      <a href="relatori/cinzia-roma.html" class="relatore-card" data-day="venerdi">
+        <div class="relatore-avatar">CR</div>
+        <div class="relatore-name">Cinzia Roma</div>
+        <div class="relatore-org">Monithon</div>
+        <p class="relatore-bio-short">Community engagement manager di Monithon. Lavora per connettere cittadini, dati pubblici e comunità locali nell'ottica del monitoraggio civico.</p>
+        <div class="relatore-tags">
+          <span class="relatore-tag">Community</span>
+          <span class="relatore-tag">Open data</span>
+        </div>
+      </a>
+
+      <a href="relatori/naomi-pedri-stocco.html" class="relatore-card" data-day="venerdi">
+        <div class="relatore-avatar">NP</div>
+        <div class="relatore-name">Naomi Pedri Stocco</div>
+        <div class="relatore-org">9metriquadri</div>
+        <p class="relatore-bio-short">Ricercatrice e attivista per il diritto all'abitare universitario. Parte di 9metriquadri, progetto che indaga le condizioni abitative degli studenti.</p>
+        <div class="relatore-tags">
+          <span class="relatore-tag">Abitare universitario</span>
+        </div>
+      </a>
+
+      <a href="relatori/valentina-rizzi.html" class="relatore-card" data-day="venerdi">
+        <div class="relatore-avatar">VR</div>
+        <div class="relatore-name">Valentina Rizzi</div>
+        <div class="relatore-org">9metriquadri</div>
+        <p class="relatore-bio-short">Parte di 9metriquadri, progetto che analizza la crisi abitativa studentesca in Italia attraverso dati, storie e advocacy.</p>
+        <div class="relatore-tags">
+          <span class="relatore-tag">Abitare universitario</span>
+        </div>
+      </a>
+
+      <a href="relatori/sarah-gainsforth.html" class="relatore-card" data-day="venerdi">
+        <div class="relatore-avatar">SG</div>
+        <div class="relatore-name">Sarah Gainsforth</div>
+        <div class="relatore-org">Ricercatrice indipendente</div>
+        <p class="relatore-bio-short">Ricercatrice indipendente, saggista e giornalista freelance. Autrice di "Airbnb città merce" e "Abitare Stanca". Scrive di politiche abitative e gentrificazione.</p>
+        <div class="relatore-tags">
+          <span class="relatore-tag">Giornalismo</span>
+          <span class="relatore-tag">Housing</span>
+          <span class="relatore-tag">Gentrificazione</span>
+        </div>
+      </a>
+
+      <a href="relatori/laura-colini.html" class="relatore-card" data-day="venerdi">
+        <div class="relatore-avatar">LC</div>
+        <div class="relatore-name">Laura Colini</div>
+        <div class="relatore-org">Social Forum dell'Abitare</div>
+        <p class="relatore-bio-short">Attiva nel Social Forum dell'Abitare, si occupa di politiche urbane, diritto alla città e pratiche di mappatura partecipata.</p>
+        <div class="relatore-tags">
+          <span class="relatore-tag">Politiche urbane</span>
+          <span class="relatore-tag">Partecipazione</span>
+        </div>
+      </a>
+
+      <!-- SABATO: Tavola Rotonda -->
+
+      <a href="relatori/filippo-celata.html" class="relatore-card" data-day="sabato">
+        <div class="relatore-avatar">FC</div>
+        <div class="relatore-name">Filippo Celata</div>
+        <div class="relatore-org">Università La Sapienza, Roma</div>
+        <p class="relatore-bio-short">Professore ordinario di Geografia Economica alla Sapienza. Principal investigator del progetto PRIN "The short-term city". Tra i massimi esperti italiani di locazioni brevi.</p>
+        <div class="relatore-tags">
+          <span class="relatore-tag">Locazioni brevi</span>
+          <span class="relatore-tag">Geografia</span>
+          <span class="relatore-tag">Dati spaziali</span>
+        </div>
+      </a>
+
+      <a href="relatori/giacomo-menegus.html" class="relatore-card" data-day="sabato">
+        <div class="relatore-avatar">GM</div>
+        <div class="relatore-name">Giacomo Menegus</div>
+        <div class="relatore-org">OCIO, Venezia</div>
+        <p class="relatore-bio-short">Ricercatore e attivista di OCIO, l'osservatorio civico veneziano sulla casa. Si occupa di mappatura e regolamentazione delle locazioni brevi.</p>
+        <div class="relatore-tags">
+          <span class="relatore-tag">Venezia</span>
+          <span class="relatore-tag">LTB</span>
+          <span class="relatore-tag">Regolamentazione</span>
+        </div>
+      </a>
+
+      <a href="relatori/grazia-galli.html" class="relatore-card" data-day="sabato">
+        <div class="relatore-avatar">GG</div>
+        <div class="relatore-name">Grazia Galli</div>
+        <div class="relatore-org">Progetto Firenze</div>
+        <p class="relatore-bio-short">Attiva in Progetto Firenze, impegnata nella difesa della residenzialità nei centri storici e nel contrasto alla turistificazione.</p>
+        <div class="relatore-tags">
+          <span class="relatore-tag">Firenze</span>
+          <span class="relatore-tag">Residenzialità</span>
+        </div>
+      </a>
+
+      <a href="relatori/alberto-campailla.html" class="relatore-card" data-day="sabato">
+        <div class="relatore-avatar">AC</div>
+        <div class="relatore-name">Alberto Campailla</div>
+        <div class="relatore-org">Nonna Roma / Social Forum dell'Abitare Roma</div>
+        <p class="relatore-bio-short">Attivista e referente di Nonna Roma e del Social Forum dell'Abitare a Roma. Si batte contro sfratti e per politiche abitative inclusive nella Capitale.</p>
+        <div class="relatore-tags">
+          <span class="relatore-tag">Attivismo</span>
+          <span class="relatore-tag">Roma</span>
+          <span class="relatore-tag">Welfare</span>
+        </div>
+      </a>
+
+      <!-- SABATO: Laboratori -->
+
+      <a href="relatori/alice-corona.html" class="relatore-card" data-day="sabato">
+        <div class="relatore-avatar">ACo</div>
+        <div class="relatore-name">Alice Corona</div>
+        <div class="relatore-org">OCIO, Venezia</div>
+        <p class="relatore-bio-short">Ricercatrice di OCIO. Analizza la distribuzione e l'impatto delle locazioni turistiche brevi nel territorio veneziano tramite dati aperti.</p>
+        <div class="relatore-tags">
+          <span class="relatore-tag">Venezia</span>
+          <span class="relatore-tag">LTB</span>
+          <span class="relatore-tag">Cartografia</span>
+        </div>
+      </a>
+
+      <a href="relatori/giacomo-salerno.html" class="relatore-card" data-day="sabato">
+        <div class="relatore-avatar">GS</div>
+        <div class="relatore-name">Giacomo Salerno</div>
+        <div class="relatore-org">OCIO, Venezia</div>
+        <p class="relatore-bio-short">Parte del team OCIO, contribuisce alla raccolta e analisi di dati sulle locazioni brevi e la trasformazione del mercato abitativo veneziano.</p>
+        <div class="relatore-tags">
+          <span class="relatore-tag">Venezia</span>
+          <span class="relatore-tag">Dati</span>
+        </div>
+      </a>
+
+      <a href="relatori/alessandro-tonin.html" class="relatore-card" data-day="sabato">
+        <div class="relatore-avatar">AT</div>
+        <div class="relatore-name">Alessandro Tonin</div>
+        <div class="relatore-org">OCIO, Venezia</div>
+        <p class="relatore-bio-short">Membro di OCIO. Lavora alla mappatura e all'analisi del fenomeno Airbnb e delle locazioni brevi nel contesto lagunare.</p>
+        <div class="relatore-tags">
+          <span class="relatore-tag">Venezia</span>
+          <span class="relatore-tag">LTB</span>
+        </div>
+      </a>
+
+      <a href="relatori/giacomo-infelise.html" class="relatore-card" data-day="sabato">
+        <div class="relatore-avatar">GI</div>
+        <div class="relatore-name">Giacomo Infelise</div>
+        <div class="relatore-org">OCIO, Venezia</div>
+        <p class="relatore-bio-short">Ricercatore di OCIO, si occupa di strumenti normativi e regolamentazione delle locazioni brevi a livello locale e nazionale.</p>
+        <div class="relatore-tags">
+          <span class="relatore-tag">Regolamentazione</span>
+          <span class="relatore-tag">Venezia</span>
+        </div>
+      </a>
+
+      <a href="relatori/chiara-agnoletti.html" class="relatore-card" data-day="sabato">
+        <div class="relatore-avatar">CA</div>
+        <div class="relatore-name">Chiara Agnoletti</div>
+        <div class="relatore-org">IRPET – Istituto Regionale Programmazione Economica Toscana</div>
+        <p class="relatore-bio-short">Economista all'IRPET. Analizza l'impatto delle locazioni turistiche brevi sul mercato immobiliare toscano con metodologie econometriche.</p>
+        <div class="relatore-tags">
+          <span class="relatore-tag">Economia</span>
+          <span class="relatore-tag">Mercato immobiliare</span>
+          <span class="relatore-tag">Toscana</span>
+        </div>
+      </a>
+
+      <a href="relatori/francesco-viviani.html" class="relatore-card" data-day="sabato">
+        <div class="relatore-avatar">FV</div>
+        <div class="relatore-name">Francesco Viviani</div>
+        <div class="relatore-org">Università di Firenze</div>
+        <p class="relatore-bio-short">Ricercatore all'Università di Firenze. Studia gli effetti delle locazioni brevi sul mercato immobiliare, con focus su metodologie di analisi quantitativa.</p>
+        <div class="relatore-tags">
+          <span class="relatore-tag">Ricerca</span>
+          <span class="relatore-tag">Firenze</span>
+          <span class="relatore-tag">LTB</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Social Forum dell'Abitare</div>
+  <p>Venezia, 10–11 Aprile 2026</p>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+function filterRelatori(day, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.relatore-card').forEach(card => {
+    if (day === 'tutti') {
+      card.style.display = 'block';
+    } else {
+      const days = card.dataset.day || '';
+      card.style.display = days.includes(day) ? 'block' : 'none';
+    }
+  });
+}
+</script>
+</body>
+</html>

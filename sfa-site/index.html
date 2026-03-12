@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Social Forum dell'Abitare – Venezia 2026</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="sticky-header" id="sticky-header">
+<nav id="main-nav">
+  <a href="index.html" class="nav-logo">
+    <img src="logo.png" alt="Social Forum dell'Abitare" style="height: 36px; width: auto; border-radius: 4px;">
+  </a>
+  <button class="nav-hamburger" aria-label="Menu" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="programma.html">Programma</a></li>
+    <li><a href="workshop.html">Laboratori</a></li>
+    <li><a href="relatori.html">Relatori</a></li>
+    <li><a href="indicazioni.html">Indicazioni</a></li>
+    <li><a href="passaggi.html" style="color: var(--teal); font-weight: 700;">🚗 Passaggi</a></li>
+  </ul>
+</nav>
+
+<div class="alert-banner" id="alert-banner">
+  <div class="alert-banner-inner">
+    <span class="alert-icon">⚠️</span>
+    <span class="alert-text">
+      <strong>Attenzione — lavori ferroviari:</strong> il 10 e 11 aprile sono previsti lavori sulla linea Roma–Firenze.
+      I treni da Roma e Firenze potrebbero subire cancellazioni o variazioni. Verifica il tuo treno su
+      <a href="https://www.trenitalia.com" target="_blank">Trenitalia</a> o considera
+      <a href="passaggi.html">un passaggio in auto</a>.
+    </span>
+    <button class="alert-close" onclick="chiudiBanner()" aria-label="Chiudi">✕</button>
+  </div>
+</div>
+</div><!-- end .sticky-header -->
+
+<!-- HERO -->
+<section class="hero">
+  <div class="blob shape-circle hero-blob-1"></div>
+  <div class="blob shape-circle hero-blob-2"></div>
+  <div class="blob shape-circle hero-blob-3"></div>
+
+  <div class="hero-content">
+    <span class="hero-eyebrow fade-up fade-up-1">Verso l'Assemblea del</span>
+    <h1 class="fade-up fade-up-2">
+      Social Forum<br>
+      <em>dell'Abitare</em>
+    </h1>
+    <p class="hero-sub fade-up fade-up-3">
+      Dati, osservatori e politiche per l'abitare<br>
+      in città e territori (altrimenti) a breve termine
+    </p>
+    <p class="hero-collab fade-up fade-up-3">
+      In collaborazione con <strong>H-City. Housing in the city</strong> – Università IUAV di Venezia
+    </p>
+    <div class="hero-date fade-up fade-up-4">📍 Venezia, 10–11 Aprile 2026</div>
+    <div class="hero-ctas fade-up fade-up-4">
+      <a href="programma.html" class="btn btn-primary">Vedi il programma</a>
+      <a href="workshop.html" class="btn btn-secondary">I laboratori</a>
+      <a href="https://bit.ly/sfa-venezia" target="_blank" class="btn btn-outline">Iscriviti →</a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ABOUT -->
+<section style="background: var(--white);">
+  <div class="container">
+    <span class="section-label">Il convegno</span>
+    <h2>Due giorni di confronto sull'abitare</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; margin-top: 2.5rem;">
+      
+      <div style="padding: 1.8rem; background: var(--lavender-bg); border-radius: 16px;">
+        <div style="font-size: 2rem; margin-bottom: 0.75rem;">🗓️</div>
+        <h3 style="font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;">Venerdì 10 Aprile</h3>
+        <p style="font-size: 0.9rem; line-height: 1.6; opacity: 0.8;">
+          <strong>Come nasce un osservatorio sull'abitare?</strong><br>
+          Tavola rotonda e laboratori all'IUAV Ex Cotonificio, Santa Marta (Sestiere Dorsoduro). Serata: plenaria a Mestre.
+        </p>
+        <a href="programma.html#ven" style="display: inline-block; margin-top: 1rem; color: var(--teal); font-weight: 600; font-size: 0.9rem; text-decoration: none;">Programma →</a>
+      </div>
+
+      <div style="padding: 1.8rem; background: var(--lavender-bg); border-radius: 16px;">
+        <div style="font-size: 2rem; margin-bottom: 0.75rem;">🗓️</div>
+        <h3 style="font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;">Sabato 11 Aprile</h3>
+        <p style="font-size: 0.9rem; line-height: 1.6; opacity: 0.8;">
+          <strong>Dati e politiche per città a breve termine</strong><br>
+          Tavola rotonda e laboratori all'IUAV Palazzo Badoer – Aula Tafuri (Sestiere Santa Croce).
+        </p>
+        <a href="programma.html#sab" style="display: inline-block; margin-top: 1rem; color: var(--teal); font-weight: 600; font-size: 0.9rem; text-decoration: none;">Programma →</a>
+      </div>
+
+      <div style="padding: 1.8rem; background: var(--yellow); border-radius: 16px;">
+        <div style="font-size: 2rem; margin-bottom: 0.75rem;">🔬</div>
+        <h3 style="font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;">9 Laboratori</h3>
+        <p style="font-size: 0.9rem; line-height: 1.6; opacity: 0.8;">
+          Sessioni pratiche su dati, mappatura, archivi pubblici, regolamentazione e molto altro. Accesso gratuito con iscrizione.
+        </p>
+        <a href="workshop.html" style="display: inline-block; margin-top: 1rem; color: var(--dark); font-weight: 600; font-size: 0.9rem; text-decoration: none;">Scopri i lab →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ISCRIZIONE CTA -->
+<section style="background: var(--teal); padding: 4rem 2rem; text-align: center; position: relative; overflow: hidden;">
+  <div class="blob shape-circle" style="width: 200px; height: 200px; background: var(--yellow); top: -80px; right: -50px; opacity: 0.5;"></div>
+  <div style="position: relative; z-index: 1;">
+    <h2 style="color: white; margin-bottom: 1rem;">Per partecipare è necessario iscriversi</h2>
+    <p style="color: rgba(255,255,255,0.85); margin-bottom: 2rem; font-size: 1.05rem;">La partecipazione è gratuita. Registrati al link qui sotto.</p>
+    <a href="https://bit.ly/sfa-venezia" target="_blank" class="btn" style="background: var(--yellow); color: var(--dark); font-size: 1.05rem; padding: 14px 36px;">
+      Iscriviti ora — bit.ly/sfa-venezia
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div style="margin-bottom: 1rem;">
+    <img src="logo.png" alt="Social Forum dell'Abitare" style="height: 80px; width: auto; border-radius: 8px; opacity: 0.9;">
+  </div>
+  <div class="footer-logo">Social Forum dell'Abitare</div>
+  <p>Venezia, 10–11 Aprile 2026</p>
+  <p style="margin-top: 0.5rem;">In collaborazione con <a href="#">H-City. Housing in the city</a> · Università IUAV di Venezia</p>
+  <p style="margin-top: 1rem; font-size: 0.8rem; opacity: 0.4;">Luoghi: <a href="https://bit.ly/sfa-luoghi-venezia" target="_blank">bit.ly/sfa-luoghi-venezia</a></p>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

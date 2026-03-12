@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Programma – Social Forum dell'Abitare 2026</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav id="main-nav">
+  <a href="index.html" class="nav-logo">
+    <img src="logo.png" alt="Social Forum dell'Abitare" style="height: 36px; width: auto; border-radius: 4px;">
+  </a>
+  <button class="nav-hamburger" aria-label="Menu" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="programma.html">Programma</a></li>
+    <li><a href="workshop.html">Laboratori</a></li>
+    <li><a href="relatori.html">Relatori</a></li>
+    <li><a href="indicazioni.html">Indicazioni</a></li>
+    <li><a href="passaggi.html" style="color: var(--teal); font-weight: 700;">🚗 Passaggi</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="blob shape-circle page-hero-blob-1"></div>
+  <div class="blob shape-circle page-hero-blob-2"></div>
+  <span class="section-label">Il programma completo</span>
+  <h1>Programma<br>10–11 Aprile 2026</h1>
+  <div class="page-hero-meta" style="margin-top: 1rem;">
+    <span class="meta-tag">Venezia</span>
+    <span class="meta-tag teal">IUAV</span>
+    <span class="meta-tag" style="background: var(--yellow); color: var(--dark);">Ingresso gratuito con iscrizione</span>
+  </div>
+</div>
+
+<!-- PROGRAM -->
+<section class="program-section" id="ven">
+  <div class="container">
+    <span class="section-label">Scegli il giorno</span>
+    <h2>Il programma</h2>
+
+    <div class="program-tabs">
+      <button class="tab-btn active" data-day="ven" onclick="switchTab('ven')">🗓 Venerdì 10 Aprile</button>
+      <button class="tab-btn" data-day="sab" onclick="switchTab('sab')">🗓 Sabato 11 Aprile</button>
+    </div>
+
+    <!-- VENERDI -->
+    <div class="tab-content active" id="day-ven">
+      <div style="margin-bottom: 1.5rem;">
+        <p style="color: rgba(255,255,255,0.7); font-size: 1.05rem; font-style: italic;">
+          "Come nasce un osservatorio sull'abitare?"
+        </p>
+        <p style="color: var(--yellow); font-size: 0.9rem; margin-top: 0.3rem;">
+          📍 <a href="indicazioni.html#iuav-cotonificio" style="color:inherit;text-decoration:underline;text-decoration-color:rgba(255,255,255,0.3)">IUAV Ex Cotonificio, Santa Marta (Sestiere Dorsoduro)</a>
+        </p>
+      </div>
+
+      <div class="program-block">
+        <div class="program-time">14:00 – 15:45</div>
+        <div class="program-type">Tavola Rotonda</div>
+        <div class="program-title">Gli osservatori casa: analisi, strumenti e obiettivi</div>
+        <div style="color: rgba(255,255,255,0.75); font-size: 0.9rem; margin: 0.75rem 0; line-height: 1.7;">
+          <strong>Intervengono:</strong><br>
+          <strong><a href="relatori/andrea-marzolino.html" style="color:inherit">Andrea Marzolino</a></strong>, ORDA – Osservatorio Reggiano per il Diritto all'Abitare, Reggio Emilia<br>
+          <strong><a href="relatori/enrico-puccini.html" style="color:inherit">Enrico Puccini</a></strong>, Osservatorio Casa, Roma<br>
+          <strong><a href="relatori/marco-peverini.html" style="color:inherit">Marco Peverini</a></strong>, OCA – Osservatorio Casa Abbordabile, Milano<br>
+          <strong><a href="relatori/marco-guerzoni.html" style="color:inherit">Marco Guerzoni</a></strong>, OMSA – Osservatorio Metropolitano Sistema Abitativo, Bologna<br>
+          <strong><a href="relatori/orazio-alberti.html" style="color:inherit">Orazio Alberti</a></strong>, OCIO – Osservatorio CIvicO sulla casa e la residenza, Venezia<br>
+          <strong><a href="relatori/laura-fregolent.html" style="color:inherit">Laura Fregolent</a></strong>, H-City. Housing in the city
+        </div>
+      </div>
+
+      <div class="program-block">
+        <div class="program-time">16:15 – 17:45</div>
+        <div class="program-type">Laboratori</div>
+        <div class="program-title">Verso un archivio pubblico dell'abitare</div>
+        <p style="color: rgba(255,255,255,0.65); font-size: 0.9rem; margin: 0.5rem 0 1rem; line-height: 1.6;">
+          Come si costruisce la conoscenza pubblica sull'abitare? Da dove si parte quando si vuole analizzare in modo integrato la crisi abitativa di una città o di un territorio?
+        </p>
+        <div class="program-labs">
+          <div class="lab-tag">
+            <a href="pages/lab-venerdì-1.html">LAB 1 – Accesso alle informazioni</a>
+            <div class="lab-tag-speakers">Antonella Ciociola e Cinzia Roma, Monithon</div>
+          </div>
+          <div class="lab-tag">
+            <a href="pages/lab-venerdì-2.html">LAB 2 – Abitare universitario</a>
+            <div class="lab-tag-speakers">Naomi Pedri Stocco, Valentina Rizzi, 9metriquadri e Sarah Gainsforth</div>
+          </div>
+          <div class="lab-tag">
+            <a href="pages/lab-venerdì-3.html">LAB 3 – Mappare le città dal Basso</a>
+            <div class="lab-tag-speakers">Laura Fregolent, IUAV e Laura Colini, Social Forum</div>
+          </div>
+          <div class="lab-tag">
+            <a href="pages/lab-venerdì-4.html">LAB 4 – Vuoti abitativi</a>
+            <div class="lab-tag-speakers">Marco Guerzoni, OMSA, Bologna</div>
+          </div>
+          <div class="lab-tag" style="border-color: rgba(74,173,156,0.5); background: rgba(74,173,156,0.12);">
+            <a href="pages/lab-bambini.html" style="color: var(--teal-light);">LAB ⭐ – Sostenibilità laguna (per bambini!)</a>
+            <div class="lab-tag-speakers">We Are Here Venice · Workshop creativo sulla sostenibilità lagunare</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="program-block" style="border-left: 4px solid var(--yellow);">
+        <div class="program-time">19:30</div>
+        <div class="program-type">Plenaria</div>
+        <div class="program-title">Non c'è più spazio da perdere</div>
+        <div class="program-location">
+          📍 <a href="indicazioni.html#pandora" style="color:inherit;text-decoration:underline;text-decoration-color:rgba(255,255,255,0.3)">Laboratorio Climatico Pandora, ex CUP (occupato), via Antonio da Mestre 12, Mestre</a>
+        </div>
+        <div style="margin-top: 0.75rem; background: rgba(245,200,66,0.1); border-radius: 8px; padding: 0.6rem 1rem; font-size: 0.9rem; color: var(--yellow);">
+          Focus: vuoti e rigenerazione urbana
+        </div>
+      </div>
+
+      <div class="program-block" style="background: rgba(74,173,156,0.1); border-color: rgba(74,173,156,0.3);">
+        <div class="program-time">Serata</div>
+        <div class="program-type">Convivialità</div>
+        <div class="program-title">Cena Sociale</div>
+      </div>
+    </div>
+
+    <!-- SABATO -->
+    <div class="tab-content" id="day-sab">
+      <div style="margin-bottom: 1.5rem;">
+        <p style="color: rgba(255,255,255,0.7); font-size: 1.05rem; font-style: italic;">
+          "Dati e politiche per città a breve termine"
+        </p>
+        <p style="color: var(--yellow); font-size: 0.9rem; margin-top: 0.3rem;">
+          📍 <a href="indicazioni.html#palazzo-badoer" style="color:inherit;text-decoration:underline;text-decoration-color:rgba(255,255,255,0.3)">IUAV Palazzo Badoer – Aula Tafuri (Sestiere Santa Croce)</a>
+        </p>
+      </div>
+
+      <div class="program-block">
+        <div class="program-time">9:00 – 10:45</div>
+        <div class="program-type">Tavola Rotonda</div>
+        <div class="program-title">Locazioni brevi: regolamentazioni, dati, prospettive</div>
+        <div style="color: rgba(255,255,255,0.75); font-size: 0.9rem; margin: 0.75rem 0; line-height: 1.7;">
+          <strong>Intervengono:</strong><br>
+          <strong><a href="relatori/filippo-celata.html" style="color:inherit">Filippo Celata</a></strong>, Università La Sapienza, Roma<br>
+          <strong><a href="relatori/giacomo-menegus.html" style="color:inherit">Giacomo Menegus</a></strong>, OCIO, Venezia<br>
+          <strong><a href="relatori/grazia-galli.html" style="color:inherit">Grazia Galli</a></strong>, Progetto Firenze<br>
+          <strong><a href="relatori/alberto-campailla.html" style="color:inherit">Alberto Campailla</a></strong>, Nonna Roma / Social Forum dell'Abitare Roma
+        </div>
+      </div>
+
+      <div class="program-block">
+        <div class="program-time">11:15 – 12:45</div>
+        <div class="program-type">Laboratori</div>
+        <div class="program-title">Verso un archivio pubblico dell'abitare</div>
+        <p style="color: rgba(255,255,255,0.65); font-size: 0.9rem; margin: 0.5rem 0 1rem; line-height: 1.6;">
+          Come si costruisce la conoscenza pubblica sull'abitare? Da dove si parte quando si vuole analizzare in modo integrato la crisi abitativa di una città o di un territorio?
+        </p>
+        <div class="program-labs">
+          <div class="lab-tag">
+            <a href="pages/lab-sabato-1.html">LAB 1 – Mappare le locazioni turistiche brevi</a>
+            <div class="lab-tag-speakers">Alice Corona, Giacomo Salerno e Alessandro Tonin, OCIO, Venezia</div>
+          </div>
+          <div class="lab-tag">
+            <a href="pages/lab-sabato-2.html">LAB 2 – Regolamentare si può</a>
+            <div class="lab-tag-speakers">Giacomo Menegus e Giacomo Infelise, OCIO, Venezia</div>
+          </div>
+          <div class="lab-tag">
+            <a href="pages/lab-sabato-3.html">LAB 3 – Come valutare le regolamentazioni e i loro effetti</a>
+            <div class="lab-tag-speakers">Filippo Celata, Università La Sapienza, Roma</div>
+          </div>
+          <div class="lab-tag">
+            <a href="pages/lab-sabato-4.html">LAB 4 – Incidenza delle LTB sul mercato immobiliare</a>
+            <div class="lab-tag-speakers">Chiara Agnoletti, IRPET e Francesco Viviani, Università di Firenze</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="program-block" style="border-left: 4px solid var(--yellow);">
+        <div class="program-time">13:00</div>
+        <div class="program-type">Chiusura</div>
+        <div class="program-title">Conclusioni</div>
+      </div>
+    </div>
+
+    <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(255,255,255,0.06); border-radius: 12px; text-align: center;">
+      <p style="color: rgba(255,255,255,0.8); margin-bottom: 1rem;">Per partecipare è necessario iscriversi</p>
+      <a href="https://bit.ly/sfa-venezia" target="_blank" class="btn btn-secondary">Iscriviti → bit.ly/sfa-venezia</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Social Forum dell'Abitare</div>
+  <p>Venezia, 10–11 Aprile 2026</p>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

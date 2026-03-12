@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Indicazioni – Social Forum dell'Abitare 2026</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav id="main-nav">
+  <a href="index.html" class="nav-logo">
+    <img src="logo.png" alt="Social Forum dell'Abitare" style="height: 36px; width: auto; border-radius: 4px;">
+  </a>
+  <button class="nav-hamburger" aria-label="Menu" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="programma.html">Programma</a></li>
+    <li><a href="workshop.html">Laboratori</a></li>
+    <li><a href="relatori.html">Relatori</a></li>
+    <li><a href="indicazioni.html">Indicazioni</a></li>
+    <li><a href="passaggi.html" style="color: var(--teal); font-weight: 700;">🚗 Passaggi</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="blob shape-circle page-hero-blob-1"></div>
+  <div class="blob shape-circle page-hero-blob-2"></div>
+  <span class="section-label">Come arrivare</span>
+  <h1>Luoghi del Forum</h1>
+  <p style="font-size: 1.1rem; opacity: 0.8; max-width: 600px; line-height: 1.6; position: relative; z-index: 1; margin-top: 0.75rem;">
+    Il Social Forum dell'Abitare si svolge in tre sedi diverse tra Venezia e Mestre. Qui trovi tutte le informazioni per raggiungerle.
+  </p>
+</div>
+
+<section>
+  <div class="container">
+    <span class="section-label">Mappa interattiva</span>
+    <h2>Dove siamo</h2>
+    <p style="opacity: 0.75; margin-bottom: 1.5rem; line-height: 1.6;">
+      Per la mappa completa dei luoghi ufficiale del Social Forum consulta anche: 
+      <a href="https://bit.ly/sfa-luoghi-venezia" target="_blank" style="color: var(--teal); font-weight: 600;">bit.ly/sfa-luoghi-venezia</a>
+    </p>
+
+    <!-- Mappa OpenStreetMap embedded via iframe -->
+    <div class="map-container">
+      <iframe
+        src="https://www.openstreetmap.org/export/embed.html?bbox=12.30,45.41,12.38,45.46&layer=mapnik&marker=45.4346,12.3176"
+        allowfullscreen
+        loading="lazy"
+        title="Mappa dei luoghi del Social Forum dell'Abitare">
+      </iframe>
+    </div>
+
+    <p style="margin-top: 0.75rem; font-size: 0.85rem; opacity: 0.55; text-align: right;">
+      Mappa: © <a href="https://www.openstreetmap.org/copyright" target="_blank" style="color: var(--teal);">OpenStreetMap</a> contributors
+    </p>
+
+    <!-- LOCATIONS -->
+    <h2 style="margin-top: 3rem;">Le sedi</h2>
+    <div class="locations-list">
+
+      <div class="location-card" id="iuav-cotonificio" style="border-left-color: var(--yellow);">
+        <h3>IUAV Ex Cotonificio – Santa Marta</h3>
+        <p>
+          Sestiere Dorsoduro, Santa Marta<br>
+          Venezia
+        </p>
+        <div class="location-events" style="margin-top: 1rem;">
+          <span class="location-event-tag">Venerdì 10 Aprile</span>
+          <span style="font-size: 0.82rem; margin-top: 0.3rem; opacity: 0.7;">14:00 – 17:45 · Tavola rotonda + Laboratori</span>
+        </div>
+        <a href="https://maps.openstreetmap.org/?mlat=45.4299&mlon=12.3120#map=17/45.4299/12.3120" target="_blank"
+           style="display: inline-block; margin-top: 1rem; font-size: 0.85rem; color: var(--teal); font-weight: 600; text-decoration: none;">
+          Apri in OpenStreetMap →
+        </a>
+      </div>
+
+      <div class="location-card" id="palazzo-badoer" style="border-left-color: var(--teal);">
+        <h3>IUAV Palazzo Badoer – Aula Tafuri</h3>
+        <p>
+          Sestiere Santa Croce<br>
+          Venezia
+        </p>
+        <div class="location-events" style="margin-top: 1rem;">
+          <span class="location-event-tag" style="background: var(--teal); color: white;">Sabato 11 Aprile</span>
+          <span style="font-size: 0.82rem; margin-top: 0.3rem; opacity: 0.7;">9:00 – 13:00 · Tavola rotonda + Laboratori + Conclusioni</span>
+        </div>
+        <a href="https://maps.openstreetmap.org/?mlat=45.4390&mlon=12.3290#map=17/45.4390/12.3290" target="_blank"
+           style="display: inline-block; margin-top: 1rem; font-size: 0.85rem; color: var(--teal); font-weight: 600; text-decoration: none;">
+          Apri in OpenStreetMap →
+        </a>
+      </div>
+
+      <div class="location-card" id="pandora" style="border-left-color: var(--lavender-dark);">
+        <h3>Laboratorio Climatico Pandora</h3>
+        <p>
+          Ex CUP (occupato)<br>
+          Via Antonio da Mestre 12<br>
+          Mestre (VE)
+        </p>
+        <div class="location-events" style="margin-top: 1rem;">
+          <span class="location-event-tag" style="background: var(--lavender-dark); color: white;">Venerdì 10 Aprile – Sera</span>
+          <span style="font-size: 0.82rem; margin-top: 0.3rem; opacity: 0.7;">19:30 · Plenaria "Non c'è più spazio da perdere" + Cena sociale</span>
+        </div>
+        <a href="https://www.openstreetmap.org/search?query=via+Antonio+da+Mestre+12+Mestre" target="_blank"
+           style="display: inline-block; margin-top: 1rem; font-size: 0.85rem; color: var(--teal); font-weight: 600; text-decoration: none;">
+          Cerca su OpenStreetMap →
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Practical info -->
+    <h2 style="margin-top: 3.5rem;">Come arrivare</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+
+      <div style="background: var(--lavender-bg); border-radius: 16px; padding: 1.5rem;">
+        <div style="font-size: 1.8rem; margin-bottom: 0.5rem;">🚂</div>
+        <h3 style="font-family: 'Syne', sans-serif; font-weight: 700; margin-bottom: 0.5rem;">In treno</h3>
+        <p style="font-size: 0.9rem; line-height: 1.6; opacity: 0.8;">
+          Stazione di Venezia Santa Lucia (centro storico) o Mestre (terraferma). Dal treno si accede poi alle sedi in vaporetto o a piedi.
+        </p>
+      </div>
+
+      <div style="background: var(--lavender-bg); border-radius: 16px; padding: 1.5rem;">
+        <div style="font-size: 1.8rem; margin-bottom: 0.5rem;">🚢</div>
+        <h3 style="font-family: 'Syne', sans-serif; font-weight: 700; margin-bottom: 0.5rem;">In vaporetto</h3>
+        <p style="font-size: 0.9rem; line-height: 1.6; opacity: 0.8;">
+          Per l'Ex Cotonificio (Dorsoduro): linea 2, fermata Santa Marta.<br>
+          Per Palazzo Badoer (Santa Croce): linea 1 o 2, fermata Riva de Biasio.
+        </p>
+      </div>
+
+      <div style="background: var(--lavender-bg); border-radius: 16px; padding: 1.5rem;">
+        <div style="font-size: 1.8rem; margin-bottom: 0.5rem;">🚌</div>
+        <h3 style="font-family: 'Syne', sans-serif; font-weight: 700; margin-bottom: 0.5rem;">Per Mestre</h3>
+        <p style="font-size: 0.9rem; line-height: 1.6; opacity: 0.8;">
+          Il Laboratorio Pandora (via Antonio da Mestre 12) è raggiungibile dal centro di Mestre a piedi o in bus dalla stazione di Mestre.
+        </p>
+      </div>
+
+    </div>
+
+    <div class="info-box">
+      <p style="font-size: 1rem; line-height: 1.7;">
+        Per la mappa ufficiale dei luoghi del Social Forum:<br>
+        <a href="https://bit.ly/sfa-luoghi-venezia" target="_blank">bit.ly/sfa-luoghi-venezia</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Social Forum dell'Abitare</div>
+  <p>Venezia, 10–11 Aprile 2026</p>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

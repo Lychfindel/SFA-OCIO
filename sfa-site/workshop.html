@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laboratori – Social Forum dell'Abitare 2026</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav id="main-nav">
+  <a href="index.html" class="nav-logo">
+    <img src="logo.png" alt="Social Forum dell'Abitare" style="height: 36px; width: auto; border-radius: 4px;">
+  </a>
+  <button class="nav-hamburger" aria-label="Menu" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="programma.html">Programma</a></li>
+    <li><a href="workshop.html">Laboratori</a></li>
+    <li><a href="relatori.html">Relatori</a></li>
+    <li><a href="indicazioni.html">Indicazioni</a></li>
+    <li><a href="passaggi.html" style="color: var(--teal); font-weight: 700;">🚗 Passaggi</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="blob shape-circle page-hero-blob-1"></div>
+  <div class="blob shape-circle page-hero-blob-2"></div>
+  <span class="section-label">Sessioni pratiche</span>
+  <h1>I Laboratori</h1>
+  <p style="font-size: 1.1rem; opacity: 0.8; max-width: 600px; line-height: 1.6; position: relative; z-index: 1; margin-top: 0.75rem;">
+    Due blocchi di laboratori pratici distribuiti nei due giorni del convegno. Partecipazione libera con iscrizione.
+  </p>
+</div>
+
+<section class="workshops-section">
+  <div class="container">
+    <h2>Verso un archivio pubblico dell'abitare</h2>
+    <p style="opacity: 0.75; max-width: 700px; line-height: 1.6; margin-bottom: 0.5rem;">
+      Come si costruisce la conoscenza pubblica sull'abitare? Da dove si parte quando si vuole analizzare in modo integrato la crisi abitativa di una città o di un territorio?
+    </p>
+    <div class="program-tabs">
+      <button class="tab-btn white-bg active" data-day="ven" onclick="switchTab('ven')">🗓 Venerdì 10 Aprile</button>
+      <button class="tab-btn white-bg" data-day="sab" onclick="switchTab('sab')">🗓 Sabato 11 Aprile</button>
+    </div>
+
+    <!-- VENERDI -->
+    <div class="tab-content active" id="day-ven">
+      <span class="section-label">Venerdì 10 Aprile — 16:15–17:45</span>
+      <p style="font-size: 0.85rem; opacity: 0.6;">
+        📍 <a href="indicazioni.html#iuav-cotonificio" style="color:inherit;text-decoration:underline;text-decoration-color:rgba(255,255,255,0.3)">IUAV Ex Cotonificio, Santa Marta (Sestiere Dorsoduro)</a>
+      </p>
+
+      <div class="workshops-grid" style="margin-top: 2rem;">
+
+        <a href="workshop/lab-venerdì-1.html" class="workshop-card">
+          <span class="workshop-card-num">1</span>
+          <div class="workshop-card-day">Venerdì 10 Aprile</div>
+          <h3>Accesso alle informazioni</h3>
+          <p class="workshop-card-speakers">
+            <strong>Antonella Ciociola</strong> e <strong>Cinzia Roma</strong><br>
+            Monithon
+          </p>
+        </a>
+
+        <a href="workshop/lab-venerdì-2.html" class="workshop-card">
+          <span class="workshop-card-num">2</span>
+          <div class="workshop-card-day">Venerdì 10 Aprile</div>
+          <h3>Abitare universitario</h3>
+          <p class="workshop-card-speakers">
+            <strong>Naomi Pedri Stocco</strong>, <strong>Valentina Rizzi</strong>, 9metriquadri<br>
+            e <strong>Sarah Gainsforth</strong>, ricercatrice
+          </p>
+        </a>
+
+        <a href="workshop/lab-venerdì-3.html" class="workshop-card">
+          <span class="workshop-card-num">3</span>
+          <div class="workshop-card-day">Venerdì 10 Aprile</div>
+          <h3>Mappare le città dal Basso</h3>
+          <p class="workshop-card-speakers">
+            <strong>Laura Fregolent</strong>, IUAV<br>
+            e <strong>Laura Colini</strong>, Social Forum dell'Abitare
+          </p>
+        </a>
+
+        <a href="workshop/lab-venerdì-4.html" class="workshop-card">
+          <span class="workshop-card-num">4</span>
+          <div class="workshop-card-day">Venerdì 10 Aprile</div>
+          <h3>Vuoti abitativi</h3>
+          <p class="workshop-card-speakers">
+            <strong>Marco Guerzoni</strong><br>
+            OMSA, Bologna
+          </p>
+        </a>
+
+        <a href="workshop/lab-bambini.html" class="workshop-card" style="background: #e8f6f3; border-color: var(--teal);">
+          <span class="workshop-card-num" style="color: rgba(58,140,126,0.15);">⭐</span>
+          <div class="workshop-card-day" style="color: var(--teal);">Venerdì 10 Aprile · Per bambini!</div>
+          <h3>Sostenibilità laguna</h3>
+          <p class="workshop-card-speakers">
+            <strong>We Are Here Venice</strong><br>
+            Workshop creativo sulla sostenibilità lagunare
+          </p>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- SABATO -->
+    <div class="tab-content" id="day-sab">
+      <span class="section-label">Sabato 11 Aprile — 11:15–12:45</span>
+      <p style="font-size: 0.85rem; opacity: 0.6;">
+        📍 <a href="indicazioni.html#palazzo-badoer" style="color:inherit;text-decoration:underline;text-decoration-color:rgba(255,255,255,0.3)">IUAV Palazzo Badoer – Aula Tafuri (Sestiere Santa Croce)</a>
+      </p>
+
+      <div class="workshops-grid" style="margin-top: 2rem;">
+
+        <a href="workshop/lab-sabato-1.html" class="workshop-card" style="background: #f5f0ff;">
+          <span class="workshop-card-num">1</span>
+          <div class="workshop-card-day">Sabato 11 Aprile</div>
+          <h3>Mappare le locazioni turistiche brevi</h3>
+          <p class="workshop-card-speakers">
+            <strong>Alice Corona</strong>, <strong>Giacomo Salerno</strong> e <strong>Alessandro Tonin</strong><br>
+            OCIO, Venezia
+          </p>
+        </a>
+
+        <a href="workshop/lab-sabato-2.html" class="workshop-card" style="background: #f5f0ff;">
+          <span class="workshop-card-num">2</span>
+          <div class="workshop-card-day">Sabato 11 Aprile</div>
+          <h3>Regolamentare si può</h3>
+          <p class="workshop-card-speakers">
+            <strong>Giacomo Menegus</strong> e <strong>Giacomo Infelise</strong><br>
+            OCIO, Venezia
+          </p>
+        </a>
+
+        <a href="workshop/lab-sabato-3.html" class="workshop-card" style="background: #f5f0ff;">
+          <span class="workshop-card-num">3</span>
+          <div class="workshop-card-day">Sabato 11 Aprile</div>
+          <h3>Come valutare le regolamentazioni e i loro effetti</h3>
+          <p class="workshop-card-speakers">
+            <strong>Filippo Celata</strong><br>
+            Università La Sapienza, Roma
+          </p>
+        </a>
+
+        <a href="workshop/lab-sabato-4.html" class="workshop-card" style="background: #f5f0ff;">
+          <span class="workshop-card-num">4</span>
+          <div class="workshop-card-day">Sabato 11 Aprile</div>
+          <h3>Incidenza delle LTB sul mercato immobiliare</h3>
+          <p class="workshop-card-speakers">
+            <strong>Chiara Agnoletti</strong>, IRPET<br>
+            e <strong>Francesco Viviani</strong>, Università di Firenze
+          </p>
+        </a>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background: var(--teal); padding: 3.5rem 2rem; text-align: center;">
+  <h2 style="color: white; margin-bottom: 1rem;">Vuoi partecipare ai laboratori?</h2>
+  <p style="color: rgba(255,255,255,0.85); margin-bottom: 2rem;">Iscrizione gratuita e obbligatoria.</p>
+  <a href="https://bit.ly/sfa-venezia" target="_blank" class="btn" style="background: var(--yellow); color: var(--dark); font-size: 1.05rem; padding: 14px 36px;">
+    Iscriviti → bit.ly/sfa-venezia
+  </a>
+</section>
+
+<footer>
+  <div class="footer-logo">Social Forum dell'Abitare</div>
+  <p>Venezia, 10–11 Aprile 2026</p>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

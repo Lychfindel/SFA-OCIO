@@ -1,0 +1,24 @@
+services:
+
+  frontend:
+    build: .
+    container_name: sfa-frontend
+    ports:
+      - "8080:80"
+    volumes:
+      - ./sfa-site:/usr/share/nginx/html
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+  backend:
+    build: ./sfa-backend
+    container_name: sfa-backend
+    env_file:
+      - .env
+    volumes:
+      - ./passaggi-data:/app/data
+    restart: unless-stopped
+
+volumes:
+  passaggi-data:
