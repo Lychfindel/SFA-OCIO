@@ -1,0 +1,26 @@
+services:
+
+  frontend:
+    build: .
+    container_name: sfa-frontend
+    volumes:
+      - ./sfa-site:/usr/share/nginx/html
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - default
+
+  backend:
+    build: ./sfa-backend
+    container_name: sfa-backend
+    env_file:
+      - .env
+    volumes:
+      - ./passaggi-data:/app/data
+    restart: unless-stopped
+
+networks:
+  default:
+    external: true
+    name: npm
