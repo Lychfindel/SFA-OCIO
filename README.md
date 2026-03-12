@@ -18,7 +18,7 @@ sfa-venezia/
 │   ├── logo.png
 │   ├── css/style.css           # Design system globale
 │   ├── js/main.js              # Nav, hamburger, tab switching, banner
-│   ├── pages/                  # Pagine dei singoli laboratori
+│   ├── workshop/               # Pagine dei singoli laboratori
 │   │   ├── lab-venerdì-1.html  # Accesso alle informazioni
 │   │   ├── lab-venerdì-2.html  # Abitare universitario
 │   │   ├── lab-venerdì-3.html  # Mappare le città dal basso
