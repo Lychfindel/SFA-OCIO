@@ -572,6 +572,19 @@ h2 {
   background: var(--lavender-bg);
   border-radius: 12px;
   padding: 1.2rem;
+  text-decoration: none;
+  color: var(--text);
+  display: block;
+  border: 2px solid transparent;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.speaker-card:visited { color: var(--text); }
+
+.speaker-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  border-color: var(--yellow);
 }
 
 .speaker-name {
@@ -869,4 +882,10 @@ footer a { color: var(--yellow); }
   height: 4px;
   background: linear-gradient(90deg, var(--yellow), var(--teal), var(--lavender-dark));
   border: none;
+}
+
+li {
+  font-size: 1.05rem;
+  opacity: 0.85;
+  margin-top: 0.5rem;
 }

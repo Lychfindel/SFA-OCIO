@@ -9,7 +9,7 @@ sfa-site/
 ├── programma.html      # Programma completo (con tab per i due giorni)
 ├── workshop.html       # Lista di tutti i laboratori
 ├── indicazioni.html    # Luoghi e mappa
-├── pages/
+├── workshop/
 │   ├── lab-venerdì-1.html   # Accesso alle informazioni
 │   ├── lab-venerdì-2.html   # Abitare universitario
 │   ├── lab-venerdì-3.html   # Mappare le città dal basso
