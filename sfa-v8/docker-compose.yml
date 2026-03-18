@@ -1,0 +1,23 @@
+services:
+
+  frontend:
+    build: ./sfa-site
+    container_name: sfa-frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+  backend:
+    build: ./sfa-backend
+    container_name: sfa-backend
+    environment:
+      GMAIL_USER: "tua@gmail.com"       # ← sostituisci con la tua Gmail
+      GMAIL_PASS: "xxxx xxxx xxxx xxxx" # ← sostituisci con l'App Password
+    volumes:
+      - passaggi-data:/app/data
+    restart: unless-stopped
+
+volumes:
+  passaggi-data:

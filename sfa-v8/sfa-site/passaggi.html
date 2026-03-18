@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Passaggi in Auto – Social Forum dell'Abitare 2026</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .passaggi-layout {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 2.5rem;
+      align-items: start;
+      margin-top: 2rem;
+    }
+
+    /* FORM */
+    .form-card {
+      background: var(--lavender-bg);
+      border-radius: 20px;
+      padding: 2rem;
+      position: sticky;
+      top: 80px;
+    }
+
+    .form-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--dark);
+    }
+
+    .form-group {
+      margin-bottom: 1.1rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      color: var(--text);
+    }
+
+    .form-group label .required {
+      color: #e05252;
+      margin-left: 2px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 10px 14px;
+      border: 2px solid var(--lavender);
+      border-radius: 10px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.95rem;
+      background: white;
+      color: var(--dark);
+      transition: border-color 0.2s;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--teal);
+    }
+
+    .form-group textarea { resize: vertical; min-height: 80px; }
+
+    .form-submit {
+      width: 100%;
+      padding: 13px;
+      background: var(--teal);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      margin-top: 0.5rem;
+    }
+
+    .form-submit:hover { background: var(--green-dark); transform: translateY(-1px); }
+    .form-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+    .form-msg {
+      margin-top: 0.75rem;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      display: none;
+    }
+    .form-msg.success { background: #d4edda; color: #1a5c2a; display: block; }
+    .form-msg.error   { background: #fde8e8; color: #8b1a1a; display: block; }
+
+    /* FILTER TABS */
+    .filter-day {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    /* PASSAGGI LIST */
+    .passaggi-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .passaggio-card {
+      background: white;
+      border: 2px solid var(--lavender);
+      border-radius: 16px;
+      padding: 1.4rem;
+      transition: box-shadow 0.2s;
+    }
+
+    .passaggio-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+    .passaggio-card.pieno { opacity: 0.55; }
+
+    .passaggio-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.75rem;
+    }
+
+    .passaggio-nome {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+
+    .passaggio-posti {
+      display: flex;
+      gap: 0.3rem;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .posto-dot {
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      background: var(--teal);
+    }
+    .posto-dot.occupato { background: var(--lavender); }
+
+    .passaggio-meta {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.6rem;
+    }
+
+    .passaggio-badge {
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 6px;
+      background: var(--lavender-bg);
+      color: var(--lavender-dark);
+    }
+
+    .passaggio-badge.day {
+      background: var(--dark);
+      color: var(--yellow);
+    }
+
+    .passaggio-note {
+      font-size: 0.88rem;
+      opacity: 0.7;
+      font-style: italic;
+      margin-bottom: 0.75rem;
+      line-height: 1.5;
+    }
+
+    .passaggio-passeggeri {
+      font-size: 0.82rem;
+      opacity: 0.6;
+      margin-bottom: 0.75rem;
+    }
+
+    /* PRENOTA FORM (inline, hidden by default) */
+    .prenota-section { border-top: 1px solid var(--lavender); padding-top: 0.75rem; margin-top: 0.5rem; }
+
+    .prenota-toggle {
+      background: var(--yellow);
+      color: var(--dark);
+      border: none;
+      padding: 8px 20px;
+      border-radius: 8px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: transform 0.15s;
+    }
+    .prenota-toggle:hover { transform: translateY(-1px); }
+    .prenota-toggle.pieno { background: var(--lavender-bg); color: var(--lavender-dark); cursor: default; }
+
+    .prenota-form {
+      display: none;
+      margin-top: 0.75rem;
+      gap: 0.6rem;
+      align-items: flex-end;
+      flex-wrap: wrap;
+    }
+    .prenota-form.visible { display: flex; }
+
+    .prenota-form input {
+      flex: 1;
+      min-width: 140px;
+      padding: 8px 12px;
+      border: 2px solid var(--lavender);
+      border-radius: 8px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+    }
+    .prenota-form input:focus { border-color: var(--teal); }
+
+    .prenota-submit {
+      padding: 8px 18px;
+      background: var(--teal);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 0.88rem;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .prenota-submit:hover { background: var(--green-dark); }
+
+    .prenota-msg {
+      width: 100%;
+      font-size: 0.85rem;
+      padding: 6px 10px;
+      border-radius: 6px;
+      display: none;
+    }
+    .prenota-msg.success { background: #d4edda; color: #1a5c2a; display: block; }
+    .prenota-msg.error   { background: #fde8e8; color: #8b1a1a; display: block; }
+
+    /* EMPTY STATE */
+    .empty-state {
+      text-align: center;
+      padding: 3rem 1rem;
+      opacity: 0.5;
+    }
+    .empty-state .emoji { font-size: 3rem; margin-bottom: 0.75rem; }
+
+    /* Loading skeleton */
+    .skeleton {
+      background: linear-gradient(90deg, var(--lavender-bg) 25%, #e0d8f5 50%, var(--lavender-bg) 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.4s infinite;
+      border-radius: 12px;
+      height: 120px;
+    }
+    @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+    @media (max-width: 900px) {
+      .passaggi-layout { grid-template-columns: 1fr; }
+      .form-card { position: static; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="logo.png" alt="Social Forum dell'Abitare" style="height: 36px; width: auto; border-radius: 4px;">
+  </a>
+  <button class="nav-hamburger" aria-label="Menu" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="programma.html">Programma</a></li>
+    <li><a href="workshop.html">Laboratori</a></li>
+    <li><a href="relatori.html">Relatori</a></li>
+    <li><a href="indicazioni.html">Indicazioni</a></li>
+    <li><a href="passaggi.html">Passaggi</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="blob shape-circle page-hero-blob-1"></div>
+  <div class="blob shape-circle page-hero-blob-2"></div>
+  <span class="section-label">Mobilità condivisa</span>
+  <h1>Passaggi in Auto</h1>
+  <p style="font-size: 1.05rem; opacity: 0.8; max-width: 600px; line-height: 1.6; position: relative; z-index: 1; margin-top: 0.75rem;">
+    Offri un posto in macchina o cerca un passaggio per raggiungere Venezia. Nessuna registrazione richiesta.
+  </p>
+  <div class="page-hero-meta" style="margin-top: 1rem;">
+    <span class="meta-tag">10 Aprile</span>
+    <span class="meta-tag">11 Aprile</span>
+    <span class="meta-tag teal">Gratuito</span>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <div class="passaggi-layout">
+
+      <!-- FORM OFFRI PASSAGGIO -->
+      <div>
+        <div class="form-card">
+          <h3>🚗 Offri un passaggio</h3>
+          <div class="form-group">
+            <label>Nome <span class="required">*</span></label>
+            <input type="text" id="f-nome" placeholder="Il tuo nome">
+          </div>
+          <div class="form-group">
+            <label>Email <span class="required">*</span></label>
+            <input type="email" id="f-email" placeholder="La tua email (riceverai notifiche)">
+          </div>
+          <div class="form-group">
+            <label>Telefono / WhatsApp</label>
+            <input type="tel" id="f-telefono" placeholder="Opzionale">
+          </div>
+          <div class="form-group">
+            <label>Città / zona di partenza <span class="required">*</span></label>
+            <input type="text" id="f-partenza" placeholder="es. Roma Termini, Firenze SMN…">
+          </div>
+          <div class="form-group">
+            <label>Giorno <span class="required">*</span></label>
+            <select id="f-giorno">
+              <option value="">— Scegli —</option>
+              <option value="venerdi">Venerdì 10 Aprile</option>
+              <option value="sabato">Sabato 11 Aprile</option>
+              <option value="entrambi">Entrambi i giorni</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Posti disponibili <span class="required">*</span></label>
+            <select id="f-posti">
+              <option value="">— Scegli —</option>
+              <option value="1">1 posto</option>
+              <option value="2">2 posti</option>
+              <option value="3">3 posti</option>
+              <option value="4">4 posti</option>
+              <option value="5">5 posti</option>
+              <option value="6">6 posti</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Note (orario di partenza, punto d'incontro…)</label>
+            <textarea id="f-note" placeholder="es. Parto da Roma Termini verso le 7:00, posso passare da Firenze"></textarea>
+          </div>
+          <button class="form-submit" onclick="creaPassaggio()">Aggiungi il mio passaggio</button>
+          <!-- Honeypot: nascosto agli utenti, visibile ai bot -->
+          <input type="text" id="f-campo-extra" name="_campo_extra" autocomplete="off" tabindex="-1" style="position:absolute;left:-9999px;opacity:0;height:0;" aria-hidden="true">
+          <div class="form-msg" id="form-msg"></div>
+        </div>
+      </div>
+
+      <!-- LISTA PASSAGGI -->
+      <div>
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem;">
+          <h2 style="margin-bottom: 0;">Passaggi disponibili</h2>
+          <button onclick="caricaPassaggi()" style="background: none; border: 2px solid var(--lavender); border-radius: 8px; padding: 6px 14px; cursor: pointer; font-family: 'Space Grotesk', sans-serif; font-size: 0.85rem; font-weight: 600; color: var(--text);">↻ Aggiorna</button>
+        </div>
+
+        <div class="filter-day">
+          <button class="filter-btn active" onclick="filtraGiorno('tutti', this)">Tutti</button>
+          <button class="filter-btn" onclick="filtraGiorno('venerdi', this)">Venerdì 10</button>
+          <button class="filter-btn" onclick="filtraGiorno('sabato', this)">Sabato 11</button>
+          <button class="filter-btn" onclick="filtraGiorno('entrambi', this)">Entrambi</button>
+        </div>
+
+        <div class="passaggi-list" id="passaggi-list">
+          <div class="skeleton"></div>
+          <div class="skeleton" style="height: 90px;"></div>
+          <div class="skeleton" style="height: 140px;"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Social Forum dell'Abitare</div>
+  <p>Venezia, 10–11 Aprile 2026</p>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+const API = '/api/passaggi';
+let tuttiPassaggi = [];
+let filtroAttivo = 'tutti';
+
+const GIORNO_LABEL = {
+  venerdi: 'Venerdì 10 Aprile',
+  sabato: 'Sabato 11 Aprile',
+  entrambi: 'Entrambi i giorni'
+};
+
+async function caricaPassaggi() {
+  const list = document.getElementById('passaggi-list');
+  list.innerHTML = '<div class="skeleton"></div><div class="skeleton" style="height:90px"></div>';
+  try {
+    const res = await fetch(API);
+    tuttiPassaggi = await res.json();
+    renderPassaggi();
+  } catch (e) {
+    list.innerHTML = '<div class="empty-state"><div class="emoji">⚠️</div><p>Impossibile caricare i passaggi.<br>Assicurati che il backend sia in esecuzione.</p></div>';
+  }
+}
+
+function renderPassaggi() {
+  const list = document.getElementById('passaggi-list');
+  let daMostrare = tuttiPassaggi;
+  if (filtroAttivo !== 'tutti') {
+    daMostrare = tuttiPassaggi.filter(p => p.giorno === filtroAttivo || p.giorno === 'entrambi');
+  }
+
+  // Sort: posti liberi first, then by creation date
+  daMostrare = [...daMostrare].sort((a, b) => {
+    if (a.posti_liberi > 0 && b.posti_liberi === 0) return -1;
+    if (a.posti_liberi === 0 && b.posti_liberi > 0) return 1;
+    return new Date(b.creato_il) - new Date(a.creato_il);
+  });
+
+  if (daMostrare.length === 0) {
+    list.innerHTML = `<div class="empty-state"><div class="emoji">🚗</div><p>Nessun passaggio disponibile${filtroAttivo !== 'tutti' ? ' per questo giorno' : ''}.<br>Sii il primo ad offrirne uno!</p></div>`;
+    return;
+  }
+
+  list.innerHTML = daMostrare.map(p => cardPassaggio(p)).join('');
+}
+
+function cardPassaggio(p) {
+  const pieno = p.posti_liberi === 0;
+  const dots = Array.from({length: p.posti_totali}, (_, i) =>
+    `<div class="posto-dot${i >= p.posti_liberi ? ' occupato' : ''}"></div>`
+  ).join('');
+
+  const passeggeriHtml = p.passeggeri.length > 0
+    ? `<div class="passaggio-passeggeri">Prenotato da: ${p.passeggeri.map(x => x.nome).join(', ')}</div>`
+    : '';
+
+  const noteHtml = p.note ? `<div class="passaggio-note">"${p.note}"</div>` : '';
+
+  const telefonoHtml = p.telefono
+    ? `<span class="passaggio-badge">📞 ${p.telefono}</span>`
+    : '';
+
+  return `
+    <div class="passaggio-card${pieno ? ' pieno' : ''}" id="card-${p.id}">
+      <div class="passaggio-header">
+        <div>
+          <div class="passaggio-nome">${escHtml(p.nome)}</div>
+          <div class="passaggio-meta" style="margin-top: 0.4rem;">
+            <span class="passaggio-badge day">${GIORNO_LABEL[p.giorno] || p.giorno}</span>
+            <span class="passaggio-badge">📍 ${escHtml(p.partenza)}</span>
+            ${telefonoHtml}
+          </div>
+        </div>
+        <div class="passaggio-posti" title="${p.posti_liberi} posti liberi su ${p.posti_totali}">
+          ${dots}
+          <span style="font-size: 0.8rem; font-weight: 600; margin-left: 0.3rem; color: ${pieno ? 'var(--lavender-dark)' : 'var(--teal)'}">
+            ${pieno ? 'Pieno' : p.posti_liberi + ' liberi'}
+          </span>
+        </div>
+      </div>
+      ${noteHtml}
+      ${passeggeriHtml}
+      <div class="prenota-section">
+        <button class="prenota-toggle${pieno ? ' pieno' : ''}"
+          onclick="${pieno ? '' : `togglePrenota('${p.id}')`}"
+          ${pieno ? 'disabled' : ''}>
+          ${pieno ? 'Nessun posto disponibile' : '+ Prenota un posto'}
+        </button>
+        <div class="prenota-form" id="pform-${p.id}">
+          <input type="text" id="pnome-${p.id}" placeholder="Il tuo nome *">
+          <input type="email" id="pemail-${p.id}" placeholder="La tua email *">
+          <input type="tel" id="ptel-${p.id}" placeholder="Telefono (opz.)">
+          <button class="prenota-submit" onclick="prenota('${p.id}')">Confermo</button>
+          <div class="prenota-msg" id="pmsg-${p.id}"></div>
+        </div>
+      </div>
+    </div>`;
+}
+
+// Mappa timestamp apertura form prenota per card
+const prenotaOpenTime = {};
+
+function togglePrenota(id) {
+  const form = document.getElementById('pform-' + id);
+  form.classList.toggle('visible');
+  if (form.classList.contains('visible')) {
+    prenotaOpenTime[id] = Date.now();
+    document.getElementById('pnome-' + id).focus();
+  }
+}
+
+async function prenota(id) {
+  const nome = document.getElementById('pnome-' + id).value.trim();
+  const email = document.getElementById('pemail-' + id).value.trim();
+  const telefono = document.getElementById('ptel-' + id).value.trim();
+  const msg = document.getElementById('pmsg-' + id);
+
+  if (!nome || !email) {
+    showMsg(msg, 'error', 'Nome e email sono obbligatori.');
+    return;
+  }
+
+  try {
+    const res = await fetch(`${API}/${id}/prenota`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        nome, email, telefono,
+        _campo_extra: '',
+        _tempo_compilazione: prenotaOpenTime[id] || (Date.now() - 5000)
+      })
+    });
+    const data = await res.json();
+    if (!res.ok) { showMsg(msg, 'error', data.error); return; }
+
+    showMsg(msg, 'success', '✓ Prenotazione confermata! Riceverai una mail con i dettagli.');
+    const idx = tuttiPassaggi.findIndex(p => p.id === id);
+    if (idx !== -1) tuttiPassaggi[idx] = data;
+    setTimeout(() => renderPassaggi(), 1800);
+  } catch (e) {
+    showMsg(msg, 'error', 'Errore di rete. Riprova.');
+  }
+}
+
+// Timestamp di apertura form (per timing check)
+let formOpenTime = Date.now();
+document.addEventListener('DOMContentLoaded', () => { formOpenTime = Date.now(); });
+
+async function creaPassaggio() {
+  const nome = document.getElementById('f-nome').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  const telefono = document.getElementById('f-telefono').value.trim();
+  const partenza = document.getElementById('f-partenza').value.trim();
+  const giorno = document.getElementById('f-giorno').value;
+  const posti = document.getElementById('f-posti').value;
+  const note = document.getElementById('f-note').value.trim();
+  const _campo_extra = document.getElementById('f-campo-extra').value;
+  const msg = document.getElementById('form-msg');
+  const btn = document.querySelector('.form-submit');
+
+  if (!nome || !email || !partenza || !giorno || !posti) {
+    showMsg(msg, 'error', 'Compila tutti i campi obbligatori.');
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Invio in corso…';
+
+  try {
+    const res = await fetch(API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ nome, email, telefono, partenza, giorno, posti, note, _campo_extra, _tempo_compilazione: formOpenTime })
+    });
+    const data = await res.json();
+    if (!res.ok) { showMsg(msg, 'error', data.error); return; }
+
+    showMsg(msg, 'success', '✓ Passaggio aggiunto! Riceverai una mail di conferma.');
+    ['f-nome','f-email','f-telefono','f-partenza','f-note'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('f-giorno').value = '';
+    document.getElementById('f-posti').value = '';
+    formOpenTime = Date.now();
+    tuttiPassaggi.unshift(data);
+    renderPassaggi();
+  } catch (e) {
+    showMsg(msg, 'error', 'Errore di rete. Assicurati che il backend sia attivo.');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Aggiungi il mio passaggio';
+  }
+}
+
+function filtraGiorno(giorno, btn) {
+  filtroAttivo = giorno;
+  document.querySelectorAll('.filter-day .filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderPassaggi();
+}
+
+function showMsg(el, type, text) {
+  el.className = 'form-msg ' + type;
+  el.textContent = text;
+  if (type === 'success') setTimeout(() => { el.className = 'form-msg'; el.textContent = ''; }, 4000);
+}
+
+function escHtml(str) {
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// Load on page ready
+caricaPassaggi();
+// Auto-refresh every 30s
+setInterval(caricaPassaggi, 30000);
+</script>
+</body>
+</html>
